@@ -149,12 +149,15 @@ POST
   }
 }
 
+@media only screen and (max-width: 730px) and (orientation: portrait) {
+    .post:first-child .post-image {
+      height: 50vh;
+    }
+}
+
 @media only screen and (max-width: 730px) {
   .post .post-title {
     font-size: 2.2rem;
-  }
-  .post:first-child .post-image {
-    height: 50vh;
   }
   .post:first-child .post-title {
     font-size: 2.8rem;
@@ -182,4 +185,27 @@ POST
 .post-list h2 {
     margin-bottom: 10px;
     font-size: 2.2rem;
+}
+
+@media only screen and (max-width: 550px) {
+    .post-list .post:not(:first-child) .post-image > a {
+        width: 30%;
+        float: left;
+        margin-right: 1rem;
+
+        img {
+            height: auto;
+        }
+    }
+    .post-list .post:not(:first-child) .post-title,
+    .post-list .post:not(:first-child) .post-date {
+        overflow: hidden;
+    }
+    .post-list .post:not(:first-child) .post-title {
+        margin-top: .5rem;
+        font-size: 1.8rem;
+    }
+    .post-list .post:not(:first-child) .post-date {
+        font-size: 1.4rem;
+    }
 }

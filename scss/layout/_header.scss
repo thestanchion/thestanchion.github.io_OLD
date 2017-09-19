@@ -74,6 +74,8 @@ HEADER
   }
   .site-header li {
     float: left;
+    margin-top: 0;
+    line-height: 1;
   }
   .site-header li:first-child {
     margin-left: 0;
