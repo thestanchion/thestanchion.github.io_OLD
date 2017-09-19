@@ -1,0 +1,13 @@
+// Media query constructor for max-width
+@mixin bp_max($pxValue) {
+    $unitLessValue: strip-unit($pxValue);
+    $value: pxToEM($unitLessValue);
+    @media all and (max-width: $value) { @content; }
+}
+
+// Media query constructor for min-width
+@mixin bp_min($pxValue) {
+    $unitLessValue: strip-unit($pxValue);
+    $value: pxToEM($unitLessValue);
+    @media all and (min-width: $value) { @content; }
+}

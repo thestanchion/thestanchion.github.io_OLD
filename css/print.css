@@ -1,0 +1,106 @@
+/*
+  print.css
+  =========
+
+  Style for print
+
+*/
+.header-form,
+.main-navigation,
+.timeline-header,
+.main-sidebar,
+.main-footer {
+  display: none !important; }
+
+a,
+a:visited {
+  text-decoration: underline; }
+
+pre,
+blockquote {
+  border: 1px solid #999;
+  page-break-inside: avoid !important;
+  page-break-after: avoid !important; }
+
+thead {
+  display: table-header-group;
+  /* h5bp.com/t */ }
+
+tr,
+img {
+  page-break-inside: avoid;
+  overflow: hidden; }
+
+img {
+  max-width: 100% !important; }
+
+@page {
+  margin: 0.5cm; }
+
+p,
+h2,
+h3 {
+  orphans: 3;
+  widows: 3; }
+
+h2,
+h3 {
+  page-break-after: avoid; }
+
+*[class*="col-"] {
+  width: 100% !important; }
+
+.main-hero *,
+.hero-carousel * {
+  color: #fff !important; }
+
+.main-hero,
+.breadcrumb,
+.main-header,
+.main-body {
+  display: block !important;
+  overflow: hidden !important;
+  width: 95% !important;
+  max-width: 95% !important; }
+
+.timeline-item {
+  display: block !important;
+  width: 95% !important;
+  margin-bottom: 80px !important;
+  page-break-inside: avoid !important; }
+
+.home-pod .pod-content p {
+  padding-left: 0 !important;
+  padding-right: 0 !important; }
+
+.home-pod .pod-content:before,
+.home-pod .pod-content:after {
+  content: none !important; }
+
+.expander-pod {
+  page-break-inside: avoid !important;
+  page-break-after: avoid !important; }
+
+.expander-pod .expander-trigger:before,
+.expander-pod .expander-trigger:after {
+  content: none !important; }
+
+.expander-pod .expander-trigger span {
+  border: 1px solid #9fa4ba !important;
+  background-color: #fff !important;
+  border-bottom: 0 !important;
+  border-radius: 0 !important;
+  page-break-inside: avoid !important;
+  page-break-after: avoid !important; }
+
+.expander-pod .expander-target {
+  display: block !important;
+  page-break-inside: avoid !important;
+  page-break-after: avoid !important; }
+
+.main-header .header-items {
+  display: inline-block !important;
+  text-align: right !important; }
+
+.main-header .header-contact p {
+  text-align: right !important; }

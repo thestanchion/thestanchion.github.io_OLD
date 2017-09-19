@@ -1,0 +1,15 @@
+@mixin table() {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+}
+
+@mixin cell($width: '', $fixed: false) {
+    display: table-cell;
+    @if $fixed == true {
+        width: unquote($width);
+        white-space: nowrap;
+    } @else if $width != '' {
+        width: unquote($width);
+    }
+}

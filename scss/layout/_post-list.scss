@@ -1,0 +1,20 @@
+/******************************************
+POST LIST
+******************************************/
+.c-post-list {
+    .c-post + .c-post {
+        margin-top: rem-calc(40);
+        padding-top: rem-calc(40);
+        border-top: 1px solid $divider-color;
+    }
+    .heading__post {
+        margin-bottom: rem-calc(10);
+
+        a {
+            color: $black;
+        }
+        a:hover {
+            color: $primary-colour;
+        }
+    }
+}

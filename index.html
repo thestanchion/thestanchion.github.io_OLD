@@ -1,8 +1,138 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Stanchion</title>
-  </head>
-  <body>
-    Stanchion
-  </body>
+    <head>
+        <title>The Stanchion</title>
+        <link rel="shortcut icon" href="/img/favicon.png?v=2">
+        <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i|PT+Sans:400,400i,700,700i:" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <link rel="stylesheet" type="text/css" href="css/fontawesome.min.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#e5127d">
+    </head>
+    <body>
+        <script type="x-template" id="post-list">
+            <main>
+                <section class="post-list">
+                    <article class="post" v-for="post in $root.posts" v-if="post.fields.slug">
+                        <div class="post-image">
+                            <router-link v-bind:to="$root.postLink(post.fields.slug)" :title="post.fields.title">
+                                <img :src="$root.postImage(post.fields.featuredImage.sys.id)" :alt="post.fields.title" />
+                            </router-link>
+                            <h2 class="post-title">
+                                <router-link v-bind:to="$root.postLink(post.fields.slug)" :title="post.fields.title">{{ post.fields.title }}</router-link>
+                            </h2>
+                            <time class="post-date">{{ $root.formatDate(post.fields.date, 'DD/MM/YYYY') }}</time>
+                        </div>
+                    </article>
+                </section>
+            </main>
+        </script>
+
+        <script type="x-template" id="page">
+            <main>
+                <header class="c-header wrapper">
+                    <h1 class="heading__page c-header__home-link">{{ $root.selectedPage.fields.title }}<span class="s-red">.</span></h1>
+                </header>
+                <section class="c-single-post">
+                    <article class="c-post">
+                        {{ $root.selectedPage.fields.body }}
+                    </article>
+                </section>
+            </main>
+        </script>
+
+        <script type="x-template" id="category">
+            <main>
+                <header class="c-header wrapper">
+                    <h1 class="heading__page c-header__home-link">posts tagged '{{ $root.selectedCategory }}'<span class="s-red">.</span></h1>
+
+                </header>
+                <section class="post-list">
+                    <article class="post" v-for="post in $root.categoryList" v-if="post.fields.slug">
+                        <div class="post-image">
+                            <router-link v-bind:to="$root.postLink(post.fields.slug)" :title="post.fields.title">
+                                <img src="{{ $root.postImage(post.fields.featuredImage.sys.id) }}" :alt="post.fields.title" />
+                            </router-link>
+                            <h2 class="post-title">
+                                <router-link v-bind:to="$root.postLink(post.fields.slug)" :title="post.fields.title">{{ post.fields.title }}</router-link>
+                            </h2>
+                            <time class="post-date">{{ $root.formatDate(post.fields.date, 'DD/MM/YYYY') }}</time>
+                        </div>
+
+                        <ul class="u-no-list c-post__categories">
+                            <li v-for="category in post.fields.categories" class="c-post__category">
+                                <router-link v-bind:to="$root.categoryLink(category.sys.id)">
+                                    {{ $root.categoryName(category.sys.id) }}
+                                </router-link>
+                            </li>
+                        </ul>
+                    </article>
+                </section>
+            </main>
+        </script>
+
+        <script type="x-template" id="post">
+            <main>
+                <article class="single-post" v-if="$root.selectedPost.fields.slug">
+                    <figure class="post-image">
+                        <router-link v-bind:to="$root.postLink($root.selectedPost.fields.slug)" :title="$root.selectedPost.fields.title">
+                            <img :src="$root.postImage($root.selectedPost.fields.featuredImage.sys.id)" :alt="$root.selectedPost.fields.title" />
+                        </router-link>
+                        <h1 class="post-title">{{ $root.selectedPost.fields.title }}</h1>
+                        <span class="post-date">{{ $root.formatDate($root.selectedPost.fields.date, 'DD/MM/YYYY') }}</span>
+                    </figure>
+                    <div class="post-content wrapper" v-html="$root.renderMarkdown($root.selectedPost.fields.body)"></div>
+
+                    <ul class="post-categories wrapper">
+                        <li v-for="category in $root.selectedPost.fields.categories" class="post-category">
+                            <router-link v-bind:to="$root.categoryLink(category.sys.id)">
+                                {{ $root.categoryName(category.sys.id) }}
+                            </router-link>
+                        </li>
+                    </ul>
+
+                    <nav class="post-nav">
+                        <router-link v-bind:to="$root.postLink($root.previousPost.fields.slug)" :title="$root.previousPost.fields.title" v-if="$root.previousPost" class="prev">
+                            <i class="fa fa-chevron-left"></i>
+                            <span class="post-nav__title">{{ $root.previousPost.fields.title }}</span>
+                        </router-link>
+
+                        <router-link v-bind:to="$root.postLink($root.nextPost.fields.slug)" :title="$root.nextPost.fields.title" v-if="$root.nextPost" class="next">
+                            <i class="fa fa-chevron-right"></i>
+                            <span class="post-nav__title">{{ $root.nextPost.fields.title }}</span>
+                        </router-link>
+                    </nav>
+                </article>
+            </main>
+        </script>
+
+        <div id="app">
+            <header class="site-header">
+                <h1><a href="/" data-nav="">The Stanchion</a></h1>
+                <ul>
+                    <li>
+                        <router-link to="/page/categories" class="c-nav__link">Categories</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/page/about" class="c-nav__link">About</router-link>
+                    </li>
+                </ul>
+            </header>
+
+            <router-view></router-view>
+        </div>
+
+        <!-- Vue -->
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+        <!-- Lodash -->
+        <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+        <!-- Vue-router -->
+        <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+        <!-- Moment JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+        <!-- Markdown -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.6.4/showdown.min.js"></script>
+
+        <script src="js/app.js"></script>
+    </body>
 </html>

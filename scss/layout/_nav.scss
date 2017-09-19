@@ -1,0 +1,28 @@
+/******************************************
+NAV
+******************************************/
+.c-nav {
+    padding: rem-calc(20 0);
+    font-size: rem-calc(14);
+}
+.c-nav__list {
+    float: right;
+    margin: 0;
+}
+.c-nav__item {
+    display: inline-block;
+    margin: 0;
+}
+.c-nav__link {
+    display: inline-block;
+    position: relative;
+    padding: 6px 10px;
+    border: 0;
+    color: $black;
+    text-decoration: none;
+
+    &:hover,
+    &.router-link-active {
+        color: $primary-colour;
+    }
+}

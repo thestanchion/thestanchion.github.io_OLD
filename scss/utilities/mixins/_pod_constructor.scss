@@ -1,0 +1,10 @@
+// Default sidebar pod styling.
+// $default: defines whether or not to use default padding.
+@mixin pod($default: true) {
+    border: 2px solid $secondaryColour;
+    border-radius: 10px;
+    @include u(margin-bottom, 2);
+    @if $default == true {
+        @include u(padding, 0.4, 0.3);
+    }
+}

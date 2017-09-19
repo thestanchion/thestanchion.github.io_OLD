@@ -1,0 +1,57 @@
+// Define breakpoints and set a width at that breakpoint
+// Example:
+    // @include w((
+    //    default: 4,
+    //    1199px: 6,
+    //    700px: 12
+    // ));
+// Output:
+    // .home-pod {
+    //   width: 33.33333%;
+    // }
+    //
+    // @media (max-width: 74.9375em) {
+    //   .home-pod {
+    //     width: 50%;
+    //   }
+    // }
+    //
+    // @media (max-width: 43.75em) {
+    //   .home-pod {
+    //     width: 100%;
+    //   }
+    // }
+@mixin width-constructor($i) {
+    @each $key, $val in $i {
+        $is-custom: if(type_of($val) == string, true, false);
+        @if $is-custom == true { // If custom then do not return col values
+            @if $key == default {
+                width: unquote($val);
+                @content;
+            } @else {
+                $unit-less-value: strip-unit($key);
+                $value: pxToEM($unit-less-value);
+                @media (max-width: $value) {
+                    width: unquote($val);
+                    @content;
+                }
+            }
+        } @else { // return col values
+            @if $key == default {
+                width: percentage($val/$maxColCount);
+                @content;
+            } @else {
+                $unit-less-value: strip-unit($key);
+                $value: pxToEM($unit-less-value);
+                @media (max-width: $value) {
+                    width: percentage($val/$maxColCount);
+                    @content;
+                }
+            }
+        }
+    }
+}
+
+@mixin w($property, $values...) {
+    @include width-constructor($property, $values...);
+}

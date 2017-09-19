@@ -1,0 +1,33 @@
+// Base text size
+$pixelBase : 10;
+
+// Colours
+$primary-colour: #e5127d;
+$secondary-colour: #58b8ce;
+$tertiary-colour: #F7DA63;
+$black: #2a2a2a;
+$white: #fefefe;
+$grey: #888;
+
+$divider-color: #e4e4e4;
+
+// Font colours
+$body-text: #4a4a4a;
+
+// Variables for site fonts
+$title-font: "Antonio", Arial, 'Helvetica Neue', Helvetica, sans-serif;
+$body-font: "Source Sans Pro", Arial, 'Helvetica Neue', Helvetica, sans-serif;
+$serif-font: "Source Serif Pro", Georgia, serif;
+
+// Grid system
+$maxColCount: 12;
+$verticalRowSpacing: 2;
+$horizontalSpacing: 1.8;
+$verticalSpacing: 1.8;
+
+// -- //
+$pageWidth: 90 + $horizontalSpacing * 2;
+$pageWidthInner: 90;
+
+$global-radius: 0;
+$default-transition-time: .2s;

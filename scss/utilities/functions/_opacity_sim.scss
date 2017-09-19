@@ -1,0 +1,6 @@
+// Mix colours, good to recreating a opcacity colour in PS
+// usage: background: o(#20345c, 80%);
+@function o($color, $amount) {
+    @return mix($color, #fff, $amount);
+}
+

@@ -1,0 +1,80 @@
+/******************************************
+HEADER
+******************************************/
+.site-header {
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.site-header h1,
+.site-header ul {
+  margin: 0;
+}
+
+.site-header h1 {
+  float: left;
+  line-height: 1;
+}
+
+.site-header h1 a {
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+.site-header h1 a:hover {
+    color: #e5127d;
+}
+
+.site-header ul {
+  float: right;
+  list-style: none;
+}
+
+.site-header ul a {
+  color: #1a1a1a;
+  font-family: 'Antonio', arial, serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.site-header ul a:hover {
+  color: #e5127d;
+}
+
+.site-header li {
+  display: inline-block;
+  margin: 10px 0 0 20px;
+}
+
+@media only screen and (max-width: 550px) {
+  .site-header h1,
+  .site-header ul {
+    display: block;
+    width: 100%;
+    float: left;
+  }
+  .site-header h1 {
+    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    text-align: center;
+  }
+  .site-header ul {
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+    width: auto;
+    margin: 0;
+    padding: 0;
+  }
+  .site-header li {
+    float: left;
+  }
+  .site-header li:first-child {
+    margin-left: 0;
+  }
+}
