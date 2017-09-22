@@ -64,7 +64,6 @@ const Post = {
     watch: {
         "$route": function() {
             var _this = this;
-            var el = document.querySelectorAll("body");
 
             setTimeout(function() {
                 _this.setPost();
