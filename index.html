@@ -15,11 +15,13 @@
                 <section class="post-list">
                     <article class="post" v-for="post in $root.posts" v-if="post.fields.slug">
                         <div class="post-image">
-                            <router-link v-bind:to="$root.postLink(post.fields.slug)" :title="post.fields.title">
+                            <router-link v-bind:to="$root.postLink(post.fields.slug)" :title="post.fields.title" v-on:click.native="$root.upSwipe()">
                                 <img :src="$root.postImage(post.fields.featuredImage.sys.id)" :alt="post.fields.title" />
                             </router-link>
                             <h2 class="post-title">
-                                <router-link v-bind:to="$root.postLink(post.fields.slug)" :title="post.fields.title">{{ post.fields.title }}</router-link>
+                                <router-link v-bind:to="$root.postLink(post.fields.slug)" :title="post.fields.title" v-on:click.native="$root.upSwipe()">
+                                    {{ post.fields.title }}
+                                </router-link>
                             </h2>
                             <time class="post-date">{{ $root.formatDate(post.fields.date, 'DD/MM/YYYY') }}</time>
                         </div>
@@ -92,12 +94,12 @@
                     </ul>
 
                     <nav class="post-nav">
-                        <router-link v-bind:to="$root.postLink($root.previousPost.fields.slug)" :title="$root.previousPost.fields.title" v-if="$root.previousPost" class="prev">
+                        <router-link v-bind:to="$root.postLink($root.previousPost.fields.slug)" :title="$root.previousPost.fields.title" v-if="$root.previousPost" v-on:click.native="$root.navigatePrevious()" class="prev">
                             <i class="fa fa-chevron-left"></i>
                             <span class="post-nav__title">{{ $root.previousPost.fields.title }}</span>
                         </router-link>
 
-                        <router-link v-bind:to="$root.postLink($root.nextPost.fields.slug)" :title="$root.nextPost.fields.title" v-if="$root.nextPost" class="next">
+                        <router-link v-bind:to="$root.postLink($root.nextPost.fields.slug)" :title="$root.nextPost.fields.title" v-if="$root.nextPost" v-on:click.native="$root.navigateNext()" class="next">
                             <i class="fa fa-chevron-right"></i>
                             <span class="post-nav__title">{{ $root.nextPost.fields.title }}</span>
                         </router-link>
@@ -108,7 +110,10 @@
 
         <div id="app">
             <header class="site-header">
-                <h1><a href="/" data-nav="">The Stanchion</a></h1>
+                <h1>
+                    <router-link to="/" v-on:click.native="$root.downSwipe()">The Stanchion</router-link>
+                    <!-- <a href="/" data-nav="">The Stanchion</a> -->
+                </h1>
                 <ul>
                     <li>
                         <router-link to="/page/categories" class="c-nav__link">Categories</router-link>

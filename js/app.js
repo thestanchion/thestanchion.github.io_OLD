@@ -63,7 +63,13 @@ const Post = {
     },
     watch: {
         "$route": function() {
-            this.setPost();
+            var _this = this;
+            var el = document.querySelectorAll("body");
+
+            setTimeout(function() {
+                _this.setPost();
+                window.scrollTo(0, 0);
+            },300);
         },
         "$root.posts": function() {
             this.setPost();
@@ -248,6 +254,74 @@ const app = new Vue({
             var converter = new showdown.Converter();
 
             return converter.makeHtml(content);
+        },
+        upSwipe: function() {
+            var el = document.querySelectorAll("body");
+
+            if (el.classList) {
+                el[0].classList.add("page-swipe-up");
+            } else {
+                el[0].className += ' ' + "page-swipe-up";
+            }
+
+            setTimeout(function() {
+                if (el.classList) {
+                    el[0].classList.remove("page-swipe-up");
+                } else {
+                    el[0].className = el[0].className.replace(new RegExp('(^|\\b)' + "page-swipe-up".split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+                }
+            },600);
+        },
+        downSwipe: function() {
+            var el = document.querySelectorAll("body");
+
+            if (el.classList) {
+                el[0].classList.add("page-swipe-down");
+            } else {
+                el[0].className += ' ' + "page-swipe-down";
+            }
+
+            setTimeout(function() {
+                if (el.classList) {
+                    el[0].classList.remove("page-swipe-down");
+                } else {
+                    el[0].className = el[0].className.replace(new RegExp('(^|\\b)' + "page-swipe-down".split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+                }
+            },600);
+        },
+        navigatePrevious: function() {
+            var el = document.querySelectorAll("body");
+
+            if (el.classList) {
+                el[0].classList.add("page-swipe-left");
+            } else {
+                el[0].className += ' ' + "page-swipe-left";
+            }
+
+            setTimeout(function() {
+                if (el.classList) {
+                    el[0].classList.remove("page-swipe-left");
+                } else {
+                    el[0].className = el[0].className.replace(new RegExp('(^|\\b)' + "page-swipe-left".split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+                }
+            },600);
+        },
+        navigateNext: function() {
+            var el = document.querySelectorAll("body");
+
+            if (el.classList) {
+                el[0].classList.add("page-swipe-right");
+            } else {
+                el[0].className += ' ' + "page-swipe-right";
+            }
+
+            setTimeout(function() {
+                if (el.classList) {
+                    el[0].classList.remove("page-swipe-right");
+                } else {
+                    el[0].className = el[0].className.replace(new RegExp('(^|\\b)' + "page-swipe-right".split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+                }
+            },600);
         }
     },
     created: function() {

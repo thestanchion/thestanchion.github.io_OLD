@@ -33,7 +33,83 @@ body {
   color: #1a1a1a;
   background: #fff;
   font: normal 400 2rem/1.5 "PT Serif", Georgia, serif;
+
+    &:before,
+    &:after {
+        content: "";
+        display: block;
+        position: fixed;
+    }
+    &:before {
+        background-color: $black;
+        z-index: 100;
+    }
+    &:after {
+        background-color: $primary-colour;
+        z-index: 101;
+    }
 }
+body.page-swipe-up {
+    &:before,
+    &:after {
+        bottom: -100%;
+        left: 0;
+        right: 0;
+        height: 100%;
+    }
+    &:before {
+        animation: pageSwipeUp linear .6s;
+    }
+    &:after {
+        animation: pageSwipeUpPink linear .5s .05s;
+    }
+}
+body.page-swipe-down {
+    &:before,
+    &:after {
+        top: -100%;
+        left: 0;
+        right: 0;
+        height: 100%;
+    }
+    &:before {
+        animation: pageSwipeDown linear .6s;
+    }
+    &:after {
+        animation: pageSwipeDownPink linear .5s .05s;
+    }
+}
+body.page-swipe-left {
+    &:before,
+    &:after {
+        top: 0;
+        bottom: 0;
+        left: -100%;
+        width: 100%;
+    }
+    &:before {
+        animation: pageSwipeLeft linear .6s;
+    }
+    &:after {
+        animation: pageSwipeLeftPink linear .5s .05s;
+    }
+}
+body.page-swipe-right {
+    &:before,
+    &:after {
+        top: 0;
+        bottom: 0;
+        right: -100%;
+        width: 100%;
+    }
+    &:before {
+        animation: pageSwipeRight linear .6s;
+    }
+    &:after {
+        animation: pageSwipeRightPink linear .5s .05s;
+    }
+}
+
 #app {
     margin-bottom: rem-calc(60);
     padding: 2rem;

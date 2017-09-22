@@ -1,0 +1,109 @@
+/******************************************
+PAGE TRANSITIONS
+******************************************/
+@keyframes pageSwipeUp {
+    0% {
+        bottom: -100%;
+    }
+    25% {
+        bottom: 0;
+    }
+    75% {
+        bottom: 0;
+    }
+    100% {
+        bottom: 100%;
+    }
+}
+@keyframes pageSwipeUpPink {
+    0% {
+        bottom: -100%;
+    }
+    50% {
+        bottom: 0;
+    }
+    100% {
+        bottom: 100%;
+    }
+}
+
+@keyframes pageSwipeDown {
+    0% {
+        top: -100%;
+    }
+    25% {
+        top: 0;
+    }
+    75% {
+        top: 0;
+    }
+    100% {
+        top: 100%;
+    }
+}
+@keyframes pageSwipeDownPink {
+    0% {
+        top: -100%;
+    }
+    50% {
+        top: 0;
+    }
+    100% {
+        top: 100%;
+    }
+}
+
+
+@keyframes pageSwipeLeft {
+    0% {
+        left: -100%;
+    }
+    25% {
+        left: 0;
+    }
+    75% {
+        left: 0;
+    }
+    100% {
+        left: 100%;
+    }
+}
+@keyframes pageSwipeLeftPink {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 0;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+
+
+@keyframes pageSwipeRight {
+    0% {
+        right: -100%;
+    }
+    25% {
+        right: 0;
+    }
+    75% {
+        right: 0;
+    }
+    100% {
+        right: 100%;
+    }
+}
+@keyframes pageSwipeRightPink {
+    0% {
+        right: -100%;
+    }
+    50% {
+        right: 0;
+    }
+    100% {
+        right: 100%;
+    }
+}

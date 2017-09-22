@@ -495,6 +495,64 @@ body {
   color: #1a1a1a;
   background: #fff;
   font: normal 400 2rem/1.5 "PT Serif", Georgia, serif; }
+  body:before, body:after {
+    content: "";
+    display: block;
+    position: fixed; }
+  body:before {
+    background-color: #2a2a2a;
+    z-index: 100; }
+  body:after {
+    background-color: #e5127d;
+    z-index: 101; }
+
+body.page-swipe-up:before, body.page-swipe-up:after {
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  height: 100%; }
+
+body.page-swipe-up:before {
+  animation: pageSwipeUp linear .6s; }
+
+body.page-swipe-up:after {
+  animation: pageSwipeUpPink linear .5s .05s; }
+
+body.page-swipe-down:before, body.page-swipe-down:after {
+  top: -100%;
+  left: 0;
+  right: 0;
+  height: 100%; }
+
+body.page-swipe-down:before {
+  animation: pageSwipeDown linear .6s; }
+
+body.page-swipe-down:after {
+  animation: pageSwipeDownPink linear .5s .05s; }
+
+body.page-swipe-left:before, body.page-swipe-left:after {
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  width: 100%; }
+
+body.page-swipe-left:before {
+  animation: pageSwipeLeft linear .6s; }
+
+body.page-swipe-left:after {
+  animation: pageSwipeLeftPink linear .5s .05s; }
+
+body.page-swipe-right:before, body.page-swipe-right:after {
+  top: 0;
+  bottom: 0;
+  right: -100%;
+  width: 100%; }
+
+body.page-swipe-right:before {
+  animation: pageSwipeRight linear .6s; }
+
+body.page-swipe-right:after {
+  animation: pageSwipeRightPink linear .5s .05s; }
 
 #app {
   margin-bottom: 6rem;
@@ -843,6 +901,81 @@ h4:first-child {
   margin-top: 0; }
 
 /******************************************
+PAGE TRANSITIONS
+******************************************/
+@keyframes pageSwipeUp {
+  0% {
+    bottom: -100%; }
+  25% {
+    bottom: 0; }
+  75% {
+    bottom: 0; }
+  100% {
+    bottom: 100%; } }
+
+@keyframes pageSwipeUpPink {
+  0% {
+    bottom: -100%; }
+  50% {
+    bottom: 0; }
+  100% {
+    bottom: 100%; } }
+
+@keyframes pageSwipeDown {
+  0% {
+    top: -100%; }
+  25% {
+    top: 0; }
+  75% {
+    top: 0; }
+  100% {
+    top: 100%; } }
+
+@keyframes pageSwipeDownPink {
+  0% {
+    top: -100%; }
+  50% {
+    top: 0; }
+  100% {
+    top: 100%; } }
+
+@keyframes pageSwipeLeft {
+  0% {
+    left: -100%; }
+  25% {
+    left: 0; }
+  75% {
+    left: 0; }
+  100% {
+    left: 100%; } }
+
+@keyframes pageSwipeLeftPink {
+  0% {
+    left: -100%; }
+  50% {
+    left: 0; }
+  100% {
+    left: 100%; } }
+
+@keyframes pageSwipeRight {
+  0% {
+    right: -100%; }
+  25% {
+    right: 0; }
+  75% {
+    right: 0; }
+  100% {
+    right: 100%; } }
+
+@keyframes pageSwipeRightPink {
+  0% {
+    right: -100%; }
+  50% {
+    right: 0; }
+  100% {
+    right: 100%; } }
+
+/******************************************
 HEADER
 ******************************************/
 .site-header {
@@ -892,6 +1025,7 @@ HEADER
     float: left; }
   .site-header h1 {
     margin-bottom: 2rem;
+    padding-top: 1rem;
     font-size: 2.4rem;
     line-height: normal;
     text-align: center; }
